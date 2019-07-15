@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View, FlatList, Text, ActivityIndicator } from 'react-native'
+import { TouchableOpacity, View, FlatList, Text, ActivityIndicator, StyleSheet } from 'react-native'
 
 export default class Home extends React.PureComponent {
     static navigationOptions = {
@@ -31,7 +31,7 @@ export default class Home extends React.PureComponent {
     }
 
     _onItemPress = (item) => {
-        this.props.navigation.navigate('Details', {chart: item})
+        this.props.navigation.navigate('Details', {chart: item.url})
     } 
 
     render() {
@@ -43,15 +43,26 @@ export default class Home extends React.PureComponent {
             )
           } else {
             return (
-                <FlatList 
-                    data={this.state.data}
-                    renderItem={this._renderItem}
-                    keyExtractor={(item) => item.id}
-                    ItemSeparatorComponent={()=>
-                        <View style={{height:1, backgroundColor: '#f7f7f7'}} 
-                    />}
-                />
+                <View>
+                    <FlatList 
+                        data={this.state.data}
+                        renderItem={this._renderItem}
+                        keyExtractor={(item) => item.id}
+                        ItemSeparatorComponent={()=>
+                            <View style={{height:1, backgroundColor: '#f7f7f7'}} 
+                        />}
+                    />
+                </View>    
             )
         }
     }
 }
+
+const style = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }
+  })

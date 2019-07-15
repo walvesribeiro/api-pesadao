@@ -24,15 +24,10 @@ class App extends React.PureComponent{
   render(){
     return <AppContainer/>
       
-    
   }
 }
 
-
-
 export default App
-
-
 
 const DashboardTabNavigator = createBottomTabNavigator({
   Home,
@@ -64,22 +59,25 @@ const DashboardStackNavigator = createStackNavigator({
 })
 
 const AppDrawerNavigator = createDrawerNavigator({
-  Welcome: {
+  List: {
     screen: DashboardStackNavigator
   },
-  Dashboard: {
+  Details: {
       screen: DashboardStackNavigator
+  },
+  Random: {
+    screen: DashboardStackNavigator
   }
 });
 const AppSwitchNavigator = createSwitchNavigator({
-  Welcome: {
-    screen: Home
+  List: {
+    screen: AppDrawerNavigator
   },
-  Dashboard: {
+  Details: {
       screen: AppDrawerNavigator
   },
-  Detalhes: {
-    screen: Random
+  Random: {
+    screen: AppDrawerNavigator
 
   }
 });
